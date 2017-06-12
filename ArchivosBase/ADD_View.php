@@ -6,22 +6,30 @@
  * Date: 3/4/17
  * Time: 21:30
  */
-class {{TABLE_NAME}}_ADD_View
+class
 {
-    public function render()
+{
+TABLE_NAME
+}
+}
+_ADD_View
+{
+    public
+    function render()
     { ?>
         <html>
         <head>
-            <title> Add {{TABLE_NAME}}</title>
+            <title> ADD {{TABLE_NAME}}</title>
             <meta charset="UTF-8">
         </head>
 
         <body>
-        <h3>Añadir {{TABLE_NAME}}</h3>
+        <h3>ADD {{TABLE_NAME}}</h3>
         <form action="?action=ADD" method="post">
 
             {{FORM}}
-           <input type="submit" value="Añadir"><br>
+            <input type="submit" value="ADD"><br>
+            <a href="{{TABLE_NAME}}_Controller.php"> //ponerlo como botón xD
 
         </form>
         </body>
