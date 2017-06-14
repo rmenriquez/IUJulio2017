@@ -110,10 +110,13 @@ class SHOWALL_View
                     $table = $table . "<td></td>";
                 }
             }
+            $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}'>
+								<img src='../View/Icons/edit.png'>
+							</a> </td>";
             $table = $table . "</tr>";
         }
         $table = $table . "</table><br>";
-        $table .=  '<a href={{TABLE_NAME}}_Controller.php" title="Back">Back</a>';
+        $table .=  '<a href=Index_Controller.php" title="Back">Back</a>';
 
         return $table;
     }

@@ -89,9 +89,17 @@ copy("ArchivosBase/index.php", $path . "index.php");
 //Se crean los SHOWALL_View a través de las tablas
 foreach ($info as $table) {
     $tableName = $table["name"];
+    $id_field = "";
+    foreach ($table["columns"] as $column){
+        if($column["Key"] === "PRI"){
+            $id_field =$column["Field"];
+        }
+    $code = $id_field."=" . '.$value['."\"$id_field\"".']?>';
     $html = file_get_contents("ArchivosBase/SHOWALL_View.php");
     $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
+    $html = str_replace("{{ATRIBUTO}}", $code, $html);
     file_put_contents("$path/Views/" . strtoupper($tableName) . "_SHOWALL_View.php", $html);
+    }
 }
 
 //Crear las vistas showCurrent

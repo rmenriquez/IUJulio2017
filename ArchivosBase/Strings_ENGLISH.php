@@ -7,7 +7,9 @@
  */
 $strings =
     array(
-        'AÑADIR'=>'AÑADIR';
+        'AÑADIR'=>'ADD';
+        'BORRAR'=>'DELETE';
+
 
     );
 ?>

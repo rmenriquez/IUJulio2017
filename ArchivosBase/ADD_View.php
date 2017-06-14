@@ -22,7 +22,7 @@ class {{TABLE_NAME}}_ADD_View{
 
             {{FORM}}
             <input type="submit" value="ADD"><br>
-            <a href="{{TABLE_NAME}}_Controller.php" title="Ir la página anterior">Volver</a>
+            <a href="{{TABLE_NAME}}_Controller.php" title="Back">Back</a>
 
         </form>
         </body>
