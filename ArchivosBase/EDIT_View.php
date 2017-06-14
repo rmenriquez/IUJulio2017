@@ -17,11 +17,13 @@ class {{TABLE_NAME}}_EDIT_View
     </head>
 
     <body>
-    <h3>Editar {{TABLE_NAME}}</h3>
+    <h3>Edit {{TABLE_NAME}}</h3>
     <form action="?action=EDIT" method="post">
 
         {{FORM}}
         <input type="submit" value="Editar"><br>
+        <a href="{{TABLE_NAME}}_Controller.php" title="Back">Back</a>
+
 
     </form>
     </body>

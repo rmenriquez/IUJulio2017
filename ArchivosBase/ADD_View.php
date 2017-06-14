@@ -6,14 +6,7 @@
  * Date: 3/4/17
  * Time: 21:30
  */
-class
-{
-{
-TABLE_NAME
-}
-}
-_ADD_View
-{
+class {{TABLE_NAME}}_ADD_View{
     public
     function render()
     { ?>
@@ -29,7 +22,7 @@ _ADD_View
 
             {{FORM}}
             <input type="submit" value="ADD"><br>
-            <a href="{{TABLE_NAME}}_Controller.php"> //ponerlo como botón xD
+            <a href="{{TABLE_NAME}}_Controller.php" title="Ir la página anterior">Volver</a>
 
         </form>
         </body>

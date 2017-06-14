@@ -23,6 +23,8 @@ class {{TABLE_NAME}}_SEARCH_View
 
             {{FORM}}
             <input type="submit" value="Search"><br>
+            <a href="../Controller/{{TABLE_NAME}}_Controller.php" title="Back">Back</a>
+
 
         </form>
         </body>

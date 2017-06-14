@@ -53,7 +53,10 @@ class {{TABLE_NAME}}_DELETE_View
 
         $table = $table . "</tr>";
     }
-    $table = $table . "</table>";
+    $table = $table . "</table><br>";
+    $table .=  '<a href={{TABLE_NAME}}_Controller.php" title="Back">Back</a>';
+
+
     return $table;
 
 }
