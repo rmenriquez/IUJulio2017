@@ -94,7 +94,7 @@ foreach ($info as $table) {
         if($column["Key"] === "PRI"){
             $id_field =$column["Field"];
         }
-    $code = $id_field."=" . '.$value['."\"$id_field\"".']?>';
+    $code = $id_field.'="' . '.$value['."\"$id_field\"".']."';
     $html = file_get_contents("ArchivosBase/SHOWALL_View.php");
     $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
     $html = str_replace("{{ATRIBUTO}}", $code, $html);
