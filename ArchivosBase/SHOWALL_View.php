@@ -110,7 +110,7 @@ class SHOWALL_View
                     $table = $table . "<td></td>";
                 }
             }
-            $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}'>
+            $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=EDIT'>
 								<img src='../View/Icons/edit.png'>
 							</a> </td>";
             $table = $table . "</tr>";
