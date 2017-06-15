@@ -1,58 +1,27 @@
 <?php
-//¿Como arreglamos el tema de los controller?
 
+include '../pruebasVarias/views/ARTICULO_SHOWALL_View.php';
 
-//Si no le indicamos en la página qué controlador queremos cargar, carga por defecto el de ALUMNO
-$controller = "ALUMNO";
+$field_list = ["CodigoA","AutoresA", "TituloA", "ISSN", "VolumenR", "PagIniA", "PagFinA", "FechaPublicacionR", "EstadoA"];
+$ar = [["CodigoA"=> "01",
+    "AutoresA" => "Raquel Marcos",
+    "TituloA" => "Como aprobar IU",
+    "ISSN"=>"0987654321",
+    "VolumenR"=>"R15",
+    "PagIniA"=>"2",
+    "PagFinA"=>"16",
+    "FechaPublicacionR"=>"15/02/2015",
+    "EstadoA"=>"Publicado"],
 
-if (isset($_GET["controller"])) {
+    ["CodigoA" => "07",
+        "AutoresA" => "Marcos Peiteado",
+        "TituloA" => "Como aprobar BDII",
+        "ISSN"=>"09876832514",
+        "VolumenR"=>"M4",
+        "PagIniA"=>"7",
+        "PagFinA"=>"12",
+        "FechaPublicacionR"=>"21/03/2013",
+        "EstadoA"=>"Enviado"]];
 
-    $controller = strtoupper($_GET["controller"]);
-    if (!file_exists("Controller/" . $controller . "_Controller.php")) {
-        $controller = "ALUMNO";
-    }
-}
-
-
-include_once "Controller/" . $controller . "_Controller.php";
-
-$action = "SHOWALL";
-
-if (isset($_GET["action"])) {
-    $action = strtoupper($_GET["action"]);
-    if (!function_exists($action)) {
-        $action = "SHOWALL";
-    }
-}
-
-switch ($action) {
-    case "SHOWALL":
-        showAll();
-        break;
-
-    case "SHOWCURRENT":
-        $id = null;
-        if (isset($_GET["id"])) {
-            $id = $_GET["id"];
-        }
-        showCurrent($id);
-        break;
-
-    case "ADD":
-        add();
-        break;
-
-    case "EDIT":
-        $id = null;
-        if (isset($_GET["id"])) {
-            $id = $_GET["id"];
-        }
-        edit($id);
-        break;
-
-
-
-
-    default:
-        echo "FALTA ACCION";
-}
+$view = new ARTICULO_SHOWALL_View($field_list, $ar);
+$view->render();

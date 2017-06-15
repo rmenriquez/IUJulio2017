@@ -6,7 +6,11 @@
  * Date: 27/3/17
  * Time: 21:54
  */
-class SHOWALL_View
+
+include '../ArchivosBase/Strings_SPANISH.php';
+//include '../ArchivosBase/Strings_ENGLISH.php';
+
+class {{TABLE_NAME}}_SHOWALL_View
 {
 
     const HTML_SKELETON = "
@@ -39,11 +43,12 @@ class SHOWALL_View
      */
     public function __construct($field_list, $values_list)
     {
+        global $strings;
         $this->field_list = $field_list;
         $this->values_list = $values_list;
 
-        $this->title = "Listado {{TABLE_NAME}}";
-        $this->header = "Listado {{TABLE_NAME}}";
+        $this->title = $strings["SHOW ALL "]. "{{TABLE_NAME}}";
+        $this->header = $strings["SHOW ALL "] . "{{TABLE_NAME}}";
 
     }
 
@@ -93,10 +98,11 @@ class SHOWALL_View
     private function generateTable()
     {
         $table = "<table>";
-        $table = $table . "<tr>";
-        $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=ADD'>
+        $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?action=ADD'>
 								<img src='Icons/add.png'>
 							</a> </td>";
+        $table = $table . "<tr>";
+
         foreach ($this->field_list as $field) {
             $table = $table . "<th>" . utf8_encode($field) . "</th>";
         }

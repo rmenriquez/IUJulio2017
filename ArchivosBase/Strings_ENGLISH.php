@@ -7,9 +7,11 @@
  */
 $strings =
     array(
-        'AÑADIR'=>'ADD';
-        'BORRAR'=>'DELETE';
-
-
+        'AÑADIR '=>'ADD ',
+        'BORRAR '=>'DELETE ',
+        'EDITAR '=>'EDIT ',
+        'MOSTRAR TODO '=>'SHOW ALL ',
+        'MOSTRAR ACTUAL '=>'SHOW CURRENT ',
+        'BUSCAR '=>'SEARCH ',
     );
 ?>
