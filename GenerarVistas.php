@@ -82,6 +82,9 @@ mkdir($path . '/views', 0777, true); //path, permisos, recursivo
 
 //se copia el index en la carpeta final
 copy("ArchivosBase/index.php", $path . "index.php");
+//se copia los arrays del lenguaje
+copy("ArchivosBase/Strings_ENGLISH.php", $path . "Strings_ENGLISH.php");
+copy("ArchivosBase/Strings_SPANISH.php", $path . "Strings_SPANISH.php");
 
 
 

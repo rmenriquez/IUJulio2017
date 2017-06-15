@@ -7,8 +7,8 @@
  * Time: 21:54
  */
 
-include '../ArchivosBase/Strings_SPANISH.php';
-//include '../ArchivosBase/Strings_ENGLISH.php';
+include 'Strings_SPANISH.php';
+include 'Strings_ENGLISH.php';
 
 class {{TABLE_NAME}}_SHOWALL_View
 {
