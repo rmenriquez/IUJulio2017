@@ -94,6 +94,9 @@ class SHOWALL_View
     {
         $table = "<table>";
         $table = $table . "<tr>";
+        $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=ADD'>
+								<img src='Icons/add.png'>
+							</a> </td>";
         foreach ($this->field_list as $field) {
             $table = $table . "<th>" . utf8_encode($field) . "</th>";
         }
@@ -111,7 +114,13 @@ class SHOWALL_View
                 }
             }
             $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=EDIT'>
-								<img src='../View/Icons/edit.png'>
+								<img src='Icons/edit.png'>
+							</a> </td>";
+            $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=DELETE'>
+								<img src='Icons/delete.png'>
+							</a> </td>";
+            $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=SHOWCURRENT'>
+								<img src='Icons/view.png'>
 							</a> </td>";
             $table = $table . "</tr>";
         }
