@@ -1,5 +1,5 @@
 <?php
-
+include 'Footer.php';
 /**
  * Created by PhpStorm.
  * User: RaquelMarcos
@@ -26,6 +26,8 @@ class {{TABLE_NAME}}_ADD_View{
 
         </form>
         </body>
+        <?php include 'Footer.php'
+        ?>
         </html>
 
         <?php
