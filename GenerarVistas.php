@@ -78,30 +78,62 @@ $info = getInformacion();
 mkdir($path, 0777, true);
 
 //Se crea la carpeta de las vistas
-mkdir($path . '/views', 0777, true); //path, permisos, recursivo
+mkdir($path . '/Views', 0777, true);
+
+//Se crea la carpeta de los strings
+mkdir($path . '/Locates', 0777, true);
+
+$pathIdiomas = "pruebasVarias/Locates";
+
+//Se crea el directorio de los iconos
+mkdir($path . '/Icons', 0777, true);
+//se copian las imágenes en la carpeta Icons generada
+copy("ArchivosBase/Icons/add.png", $path . "/Icons/add.png");
+copy("ArchivosBase/Icons/delete.png", $path . "/Icons/delete.png");
+copy("ArchivosBase/Icons/details.png", $path . "/Icons/details.png");
+copy("ArchivosBase/Icons/edit.png", $path . "/Icons/edit.png");
+
+//se crea el directorio del CSS
+mkdir($path . '/css', 0777, true); //path, permisos, recursivo
+//se crea el directorio del javaScript
+mkdir($path . '/js', 0777, true); //path, permisos, recursivo
+
 
 //se copia el index en la carpeta final
 copy("ArchivosBase/index.php", $path . "index.php");
-//se copia los arrays del lenguaje
-copy("ArchivosBase/Strings_ENGLISH.php", $path . "Strings_ENGLISH.php");
-copy("ArchivosBase/Strings_SPANISH.php", $path . "Strings_SPANISH.php");
 
-
+//se copia los arrays de los idiomas
+//Inglés
+if (!file_exists($pathIdiomas . "/Strings_ENGLISH.php")) {
+    copy("ArchivosBase/Strings_ENGLISH.php", $path . "/Locates/Strings_ENGLISH.php");
+} else {
+    $strings = file_get_contents("ArchivosBase/Strings_ENGLISH.php");
+    $strings = str_replace("\$strings", "\$strings2", $strings);
+    $strings .= "\$strings = \$strings + \$strings2";
+}
+//Español
+if (!file_exists($pathIdiomas . "/Strings_SPANISH.php")) {
+    copy("ArchivosBase/Strings_SPANISH.php", $path . "/Locates/Strings_SPANISH.php");
+} else {
+    $strings = file_get_contents("ArchivosBase/Strings_SPANISH.php");
+    $strings = str_replace("\$strings", "\$strings2", $strings);
+    $strings .= "\$strings = \$strings + \$strings2";
+}
 
 
 //Se crean los SHOWALL_View a través de las tablas
 foreach ($info as $table) {
     $tableName = $table["name"];
     $id_field = "";
-    foreach ($table["columns"] as $column){
-        if($column["Key"] === "PRI"){
-            $id_field =$column["Field"];
+    foreach ($table["columns"] as $column) {
+        if ($column["Key"] === "PRI") {
+            $id_field = $column["Field"];
         }
-    $code = $id_field.'="' . '.$value['."\"$id_field\"".']."';
-    $html = file_get_contents("ArchivosBase/SHOWALL_View.php");
-    $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
-    $html = str_replace("{{ATRIBUTO}}", $code, $html);
-    file_put_contents("$path/Views/" . strtoupper($tableName) . "_SHOWALL_View.php", $html);
+        $code = $id_field . '="' . '.$value[' . "\"$id_field\"" . ']."';
+        $html = file_get_contents("ArchivosBase/SHOWALL_View.php");
+        $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
+        $html = str_replace("{{ATRIBUTO}}", $code, $html);
+        file_put_contents("$path/Views/" . strtoupper($tableName) . "_SHOWALL_View.php", $html);
     }
 }
 
@@ -126,16 +158,16 @@ foreach ($info as $table) {
             $ini = strpos($column["Type"], "(") + 1;
             $fin = strpos($column["Type"], ")");
             $n = substr($column["Type"], $ini, $fin - $ini);
-            $form .= '<input type="number" name="' . $column["Field"] . '" min="0" maxLength="' . $n . '"><br>'."\n";
+            $form .= '<input type="number" name="' . $column["Field"] . '" min="0" maxLength="' . $n . '"><br>' . "\n";
         } else {
             if (strpos($column["Type"], "varchar") !== false) {
                 $ini = strpos($column["Type"], "(") + 1;
                 $fin = strpos($column["Type"], ")");
                 $n = substr($column["Type"], $ini, $fin - $ini);
-                $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '"><br>'."\n";
+                $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '"><br>' . "\n";
             } else {
                 if (strpos($column["Type"], "date") !== false) {
-                    $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '"><br>'."\n";
+                    $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '"><br>' . "\n";
                 } else {
                     if (strpos($column["Type"], "enum") !== false) {
                         $enum = str_replace("enum(", "", $column["Type"]);
@@ -145,7 +177,7 @@ foreach ($info as $table) {
                         foreach ($options as $opt) {
                             $select .= "<option value=" . $opt . ">" . $opt . "</option> \n";
                         }
-                        $select .= "</select>"."\n";
+                        $select .= "</select>" . "\n";
                         $form .= $select;
                     } else {
                         if (strpos($column["Type"], "float") !== false || strpos($column["Type"], "double") !== false) {
@@ -153,15 +185,15 @@ foreach ($info as $table) {
                             $fin = strpos($column["Type"], ")");
                             $n = substr($column["Type"], $ini, $fin - ($ini + 1));
                             $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '"><br>' . "\n";
-                        }else{
-                            if(strpos($column["Type"], "year") !== false){
-                                $form .= '<input type="number" name="' . $column["Field"] . '" min="1000" maxLength="4"><br>'."\n";
-                            }else{
-                                if(strpos($column["Type"], "char") !== false){
+                        } else {
+                            if (strpos($column["Type"], "year") !== false) {
+                                $form .= '<input type="number" name="' . $column["Field"] . '" min="1000" maxLength="4"><br>' . "\n";
+                            } else {
+                                if (strpos($column["Type"], "char") !== false) {
                                     $ini = strpos($column["Type"], "(") + 1;
                                     $fin = strpos($column["Type"], ")");
                                     $n = substr($column["Type"], $ini, $fin - ($ini + 1));
-                                    $form .= '<input type="text" name="' . $column["Field"] . '" min="0" maxLength="'.$n.'"  size="' . $n . '"><br>' . "\n";
+                                    $form .= '<input type="text" name="' . $column["Field"] . '" min="0" maxLength="' . $n . '"  size="' . $n . '"><br>' . "\n";
 
                                 }
                             }
@@ -191,16 +223,16 @@ foreach ($info as $table) {
             $ini = strpos($column["Type"], "(") + 1;
             $fin = strpos($column["Type"], ")");
             $n = substr($column["Type"], $ini, $fin - $ini);
-            $form .= '<input type="number" name="' . $column["Field"] . '" value="<?php echo $this->valueList["'.$column['Field'].'"]; ?>" min="0" maxLength="' . $n . '"><br>'."\n";
+            $form .= '<input type="number" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" min="0" maxLength="' . $n . '"><br>' . "\n";
         } else {
             if (strpos($column["Type"], "varchar") !== false) {
                 $ini = strpos($column["Type"], "(") + 1;
                 $fin = strpos($column["Type"], ")");
                 $n = substr($column["Type"], $ini, $fin - $ini);
-                $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->valueList["'.$column['Field'].'"]; ?>" maxLength="' . $n . '"><br>'."\n";
+                $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" maxLength="' . $n . '"><br>' . "\n";
             } else {
                 if (strpos($column["Type"], "date") !== false) {
-                    $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '" value="<?php echo $this->valueList["'.$column['Field'].'"]; ?>" ><br>'."\n";
+                    $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" ><br>' . "\n";
                 } else {
                     if (strpos($column["Type"], "enum") !== false) {
                         $enum = str_replace("enum(", "", $column["Type"]);
@@ -208,25 +240,25 @@ foreach ($info as $table) {
                         $options = explode(",", $enum);
                         $select = '<select>';
                         foreach ($options as $opt) {
-                            $select .= "<option value=" . $opt . ">" . $opt . "</option>"."\n";
+                            $select .= "<option value=" . $opt . ">" . $opt . "</option>" . "\n";
                         }
-                        $select .= "</select>"."\n";
+                        $select .= "</select>" . "\n";
                         $form .= $select;
                     } else {
                         if (strpos($column["Type"], "float") !== false || strpos($column["Type"], "double") !== false) {
                             $ini = strpos($column["Type"], "(") + 1;
                             $fin = strpos($column["Type"], ")");
                             $n = substr($column["Type"], $ini, $fin - ($ini + 1));
-                            $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->valueList["'.$column['Field'].'"]; ?>" maxLength="' . $n . '"><br>'."\n";
-                        }else{
-                            if(strpos($column["Type"], "year") !== false){
-                                $form .= '<input type="number" name="' . $column["Field"] . '" value="<?php echo $this->valueList["'.$column['Field'].'"]; ?>" min="1000" maxLength="4"><br>'."\n";
-                            }else{
-                                if(strpos($column["Type"], "char") !== false){
+                            $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" maxLength="' . $n . '"><br>' . "\n";
+                        } else {
+                            if (strpos($column["Type"], "year") !== false) {
+                                $form .= '<input type="number" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" min="1000" maxLength="4"><br>' . "\n";
+                            } else {
+                                if (strpos($column["Type"], "char") !== false) {
                                     $ini = strpos($column["Type"], "(") + 1;
                                     $fin = strpos($column["Type"], ")");
                                     $n = substr($column["Type"], $ini, $fin - ($ini + 1));
-                                    $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->valueList["'.$column['Field'].'"]; ?>" min="0" maxLength="'.$n.'"  size="' . $n . '"><br>'."\n";
+                                    $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" min="0" maxLength="' . $n . '"  size="' . $n . '"><br>' . "\n";
 
                                 }
                             }
@@ -255,16 +287,16 @@ foreach ($info as $table) {
             $ini = strpos($column["Type"], "(") + 1;
             $fin = strpos($column["Type"], ")");
             $n = substr($column["Type"], $ini, $fin - $ini);
-            $form .= '<input type="number" name="' . $column["Field"] . ' maxLength="' . $n . '"><br>'."\n";
+            $form .= '<input type="number" name="' . $column["Field"] . ' maxLength="' . $n . '"><br>' . "\n";
         } else {
             if (strpos($column["Type"], "varchar") !== false) {
                 $ini = strpos($column["Type"], "(") + 1;
                 $fin = strpos($column["Type"], ")");
                 $n = substr($column["Type"], $ini, $fin - $ini);
-                $form .= '<input type="text" name="' . $column["Field"] . ' maxLength="' . $n . '"><br>'."\n";
+                $form .= '<input type="text" name="' . $column["Field"] . ' maxLength="' . $n . '"><br>' . "\n";
             } else {
                 if (strpos($column["Type"], "date") !== false) {
-                    $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '"><br>'."\n";
+                    $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '"><br>' . "\n";
                 } else {
                     if (strpos($column["Type"], "enum") !== false) {
                         $enum = str_replace("enum(", "", $column["Type"]);
@@ -272,25 +304,25 @@ foreach ($info as $table) {
                         $options = explode(",", $enum);
                         $select = '<select>';
                         foreach ($options as $opt) {
-                            $select .= "<option value=" . $opt . ">" . $opt . "</option>"."\n";
+                            $select .= "<option value=" . $opt . ">" . $opt . "</option>" . "\n";
                         }
-                        $select .= "</select>"."\n";
+                        $select .= "</select>" . "\n";
                         $form .= $select;
                     } else {
                         if (strpos($column["Type"], "float") !== false || strpos($column["Type"], "double") !== false) {
                             $ini = strpos($column["Type"], "(") + 1;
                             $fin = strpos($column["Type"], ")");
                             $n = substr($column["Type"], $ini, $fin - ($ini + 1));
-                            $form .= '<input type="text" name="' . $column["Field"] . ' maxLength="' . $n . '"><br>'."\n";
-                        }else{
-                            if(strpos($column["Type"], "year") !== false){
-                                $form .= '<input type="number" name="' . $column["Field"] . ' maxLength="4"><br>'."\n";
-                            }else{
-                                if(strpos($column["Type"], "char") !== false){
+                            $form .= '<input type="text" name="' . $column["Field"] . ' maxLength="' . $n . '"><br>' . "\n";
+                        } else {
+                            if (strpos($column["Type"], "year") !== false) {
+                                $form .= '<input type="number" name="' . $column["Field"] . ' maxLength="4"><br>' . "\n";
+                            } else {
+                                if (strpos($column["Type"], "char") !== false) {
                                     $ini = strpos($column["Type"], "(") + 1;
                                     $fin = strpos($column["Type"], ")");
                                     $n = substr($column["Type"], $ini, $fin - ($ini + 1));
-                                    $form .= '<input type="text" name="' . $column["Field"] . 'maxLength="'.$n.'"  size="' . $n . '"><br>'."\n";
+                                    $form .= '<input type="text" name="' . $column["Field"] . 'maxLength="' . $n . '"  size="' . $n . '"><br>' . "\n";
 
                                 }
                             }

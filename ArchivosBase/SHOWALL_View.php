@@ -7,8 +7,8 @@
  * Time: 21:54
  */
 
-include 'Strings_SPANISH.php';
-include 'Strings_ENGLISH.php';
+//include 'Strings_SPANISH.php';
+//include 'Strings_ENGLISH.php';
 
 class {{TABLE_NAME}}_SHOWALL_View
 {
@@ -126,7 +126,7 @@ class {{TABLE_NAME}}_SHOWALL_View
 								<img src='Icons/delete.png'>
 							</a> </td>";
             $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=SHOWCURRENT'>
-								<img src='Icons/view.png'>
+								<img src='Icons/details.png'>
 							</a> </td>";
             $table = $table . "</tr>";
         }
