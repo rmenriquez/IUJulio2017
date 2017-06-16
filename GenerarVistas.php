@@ -120,6 +120,20 @@ if (!file_exists($pathIdiomas . "/Strings_SPANISH.php")) {
     $strings .= "\$strings = \$strings + \$strings2";
 }
 
+//Se copia el menú lateral
+copy("ArchivosBase/Menu.php", $path . "/views/Menu.php");
+//Se genera el codigo del menú
+$html = "";
+foreach ($info as $table){
+    $tableName = $table["name"];
+    $code .= "<li> Gestión $tableName  </li>";
+    $html = file_get_contents("ArchivosBase/Menu.php");
+    $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
+    $html = str_replace("{{ATRIBUTO}}", $code, $html);
+    file_put_contents("$path/Views/" . strtoupper($tableName) . "Menu.php", $html);
+}
+
+
 
 //Se crean los SHOWALL_View a través de las tablas
 foreach ($info as $table) {
