@@ -132,6 +132,13 @@ foreach ($info as $table){
     file_put_contents("$path/Views/Menu.php", $html);
 }
 
+//Se crea la fecha del Footer.php
+$date = New DateTime('UTC');
+$date = $date->format("D-M-Y");
+$html = file_get_contents("ArchivosBase/Footer.php");
+$html = str_replace("{{DATE}}", $date, $html);
+file_put_contents("$path/Views/Footer.php", $html);
+
 
 
 //Se crean los SHOWALL_View a través de las tablas

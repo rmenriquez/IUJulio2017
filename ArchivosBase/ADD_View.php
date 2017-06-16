@@ -26,7 +26,7 @@ class {{TABLE_NAME}}_ADD_View{
 
         </form>
         </body>
-        <?php include 'Footer.php'
+        <?php include 'Footer.php';
         ?>
         </html>
 

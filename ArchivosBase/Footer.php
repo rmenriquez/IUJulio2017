@@ -8,6 +8,6 @@
 ?>
 <html>
 <footer>
-<p> Página creada en <?php date("d - M - Y", filemtime("QUE COÑO METO AQUI")) ?></p>
+<p> Página creada en {{DATE}}</p>
 </footer>
 </html>

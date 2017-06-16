@@ -22,7 +22,8 @@ class {{TABLE_NAME}}_SHOWALL_View
         <body>
         <h1>{{header}}</h1>
         {{data}}
-        </body>
+        </body> 
+        {{footer}}
         </html>";
 
     const TITLE_KEY = "{{title}}";
@@ -32,6 +33,8 @@ class {{TABLE_NAME}}_SHOWALL_View
     protected $header;
 
     const DATA_KEY = "{{data}}";
+
+    const FOOTER_KEY = "{{footer}}";
 
     private $field_list;
     private $values_list;
@@ -92,6 +95,7 @@ class {{TABLE_NAME}}_SHOWALL_View
         $html = str_replace(/*self::TITLE_KEY*/"{{title}}", $this->title, self::HTML_SKELETON);
         $html = str_replace(/*self::HEADER_KEY*/"{{header}}", $this->header, $html);
         $html = str_replace(/*self::DATA_KEY*/"{{data}}", $this->generateTable(), $html);
+        $html = str_replace("{{footer}}", include 'Footer.php', $html);
         print ($html);
     }
 
