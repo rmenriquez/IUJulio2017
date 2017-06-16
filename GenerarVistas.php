@@ -123,14 +123,13 @@ if (!file_exists($pathIdiomas . "/Strings_SPANISH.php")) {
 //Se copia el menú lateral
 copy("ArchivosBase/Menu.php", $path . "/views/Menu.php");
 //Se genera el codigo del menú
-$html = "";
 foreach ($info as $table){
     $tableName = $table["name"];
-    $code .= "<li> Gestión $tableName  </li>";
+    $html = "";
+    $code .= "<li> <a href=" . "'../Controller/" . $tableName ."_Controller.php'> Gestión de " . $tableName ."</a> </li>";
     $html = file_get_contents("ArchivosBase/Menu.php");
-    $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
-    $html = str_replace("{{ATRIBUTO}}", $code, $html);
-    file_put_contents("$path/Views/" . strtoupper($tableName) . "Menu.php", $html);
+    $html = str_replace("{{data}}", $code, $html);
+    file_put_contents("$path/Views/Menu.php", $html);
 }
 
 
