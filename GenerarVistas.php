@@ -86,23 +86,23 @@ mkdir($path . '/Locates', 0777, true);
 $pathIdiomas = "pruebasVarias/Locates";
 
 //Se crea el directorio de los iconos
-mkdir($path . '/Icons', 0777, true);
+mkdir($path . '/Views/Icons', 0777, true);
 //se copian las imágenes en la carpeta Icons generada
-copy("ArchivosBase/Icons/add.png", $path . "/Icons/add.png");
-copy("ArchivosBase/Icons/delete.png", $path . "/Icons/delete.png");
-copy("ArchivosBase/Icons/details.png", $path . "/Icons/details.png");
-copy("ArchivosBase/Icons/edit.png", $path . "/Icons/edit.png");
+copy("ArchivosBase/Icons/add.png", $path . "/Views/Icons/add.png");
+copy("ArchivosBase/Icons/delete.png", $path . "/Views/Icons/delete.png");
+copy("ArchivosBase/Icons/details.png", $path . "/Views/Icons/details.png");
+copy("ArchivosBase/Icons/edit.png", $path . "/Views/Icons/edit.png");
 
 //se crea el directorio del css
-mkdir($path . '/css', 0777, true); //path, permisos, recursivo
+mkdir($path . '/Views/css', 0777, true); //path, permisos, recursivo
 //Se copia el archivo css
-copy("ArchivosBase/css/iu.css", $path . "/css/iu.css");
+copy("ArchivosBase/css/iu.css", $path . "/Views/css/iu.css");
 
 
 //se crea el directorio del javaScript
-mkdir($path . '/js', 0777, true); //path, permisos, recursivo
+mkdir($path . '/Views/js', 0777, true); //path, permisos, recursivo
 //se copia el archivo de
-copy("ArchivosBase/Icons/add.png", $path . "/Icons/add.png");
+copy("ArchivosBase/Icons/add.png", $path . "/Views/Icons/add.png");
 
 
 //se copia el index en la carpeta final
