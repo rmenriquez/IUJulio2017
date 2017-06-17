@@ -12,7 +12,7 @@
 $aux = "iupruebasql";
 $path = "pruebasVarias/";
 include_once "PDOConnection.php";
-include_once "ArchivosBase/CSS/tcal.css";
+include_once "ArchivosBase/css/tcal.css";
 
 function getTablesNames()
 {
@@ -93,10 +93,16 @@ copy("ArchivosBase/Icons/delete.png", $path . "/Icons/delete.png");
 copy("ArchivosBase/Icons/details.png", $path . "/Icons/details.png");
 copy("ArchivosBase/Icons/edit.png", $path . "/Icons/edit.png");
 
-//se crea el directorio del CSS
+//se crea el directorio del css
 mkdir($path . '/css', 0777, true); //path, permisos, recursivo
+//Se copia el archivo css
+copy("ArchivosBase/css/iu.css", $path . "/css/iu.css");
+
+
 //se crea el directorio del javaScript
 mkdir($path . '/js', 0777, true); //path, permisos, recursivo
+//se copia el archivo de
+copy("ArchivosBase/Icons/add.png", $path . "/Icons/add.png");
 
 
 //se copia el index en la carpeta final

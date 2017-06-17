@@ -9,6 +9,7 @@
 
 //include 'Strings_SPANISH.php';
 //include 'Strings_ENGLISH.php';
+include 'css/iu.css';
 
 class {{TABLE_NAME}}_SHOWALL_View
 {
@@ -21,9 +22,16 @@ class {{TABLE_NAME}}_SHOWALL_View
         </head>
         <body>
         <h1>{{header}}</h1>
-        {{data}}
-        </body> 
+        <div id='menu'>
+        {{menu}}
+        </div>
+        <div id='data'>
+        {{data}} 
+        </div>
+        <div id='footer'>       
         {{footer}}
+        </div>
+        </body> 
         </html>";
 
     const TITLE_KEY = "{{title}}";
@@ -35,6 +43,8 @@ class {{TABLE_NAME}}_SHOWALL_View
     const DATA_KEY = "{{data}}";
 
     const FOOTER_KEY = "{{footer}}";
+
+    const  MENU_KEY = "{{menu}}";
 
     private $field_list;
     private $values_list;
@@ -94,6 +104,7 @@ class {{TABLE_NAME}}_SHOWALL_View
     {
         $html = str_replace(/*self::TITLE_KEY*/"{{title}}", $this->title, self::HTML_SKELETON);
         $html = str_replace(/*self::HEADER_KEY*/"{{header}}", $this->header, $html);
+        $html = str_replace("{{menu}}", include 'Menu.php', $html);
         $html = str_replace(/*self::DATA_KEY*/"{{data}}", $this->generateTable(), $html);
         $html = str_replace("{{footer}}", include 'Footer.php', $html);
         print ($html);

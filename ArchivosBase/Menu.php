@@ -6,10 +6,9 @@
  * Time: 18:52
  */
 ?>
-<html>
-<div>
+
+</nav>
     <ul>
         {{data}}
     </ul>
-</div>
-</html>
+</nav>
