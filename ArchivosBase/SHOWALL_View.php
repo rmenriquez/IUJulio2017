@@ -5,13 +5,13 @@
 
 class {{TABLE_NAME}}_SHOWALL_View
 {
-    const HTML_HEADER ='<html>
+    const HTML_HEADER ="<html>
         <head>
             <meta charset=\'UTF-8\'>
             <title>{{title}}</title>
-            <link rel=\'stylesheet\' href=\'css/iu.css\'>
+            <link rel='stylesheet' href='Views/css/iu.css'>
         </head>
-        <body>';
+        <body>";
 
     const HTML_SKELETON = "
         <div class='data'>
