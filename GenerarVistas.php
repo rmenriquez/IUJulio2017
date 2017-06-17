@@ -129,14 +129,15 @@ if (!file_exists($pathIdiomas . "/Strings_SPANISH.php")) {
 //Se copia el menú lateral
 copy("ArchivosBase/Menu.php", $path . "/views/Menu.php");
 //Se genera el codigo del menú
-foreach ($info as $table){
+$code = "";
+foreach ($info as $table) {
     $tableName = $table["name"];
-    $html = "";
-    $code .= "<li> <a href=" . "'../Controller/" . $tableName ."_Controller.php'> Gestión de " . $tableName ."</a> </li>";
-    $html = file_get_contents("ArchivosBase/Menu.php");
-    $html = str_replace("{{data}}", $code, $html);
-    file_put_contents("$path/Views/Menu.php", $html);
+    $code .= "<li> <a href=" . "'../Controller/" . $tableName . "_Controller.php'> Gestión de " . $tableName . "</a> </li>";
+
 }
+$html = file_get_contents("ArchivosBase/Menu.php");
+$html = str_replace("{{data}}", $code, $html);
+file_put_contents("$path/Views/Menu.php", $html);
 
 //Se crea la fecha del Footer.php
 $date = New DateTime('UTC');
@@ -144,7 +145,6 @@ $date = $date->format("D-M-Y");
 $html = file_get_contents("ArchivosBase/Footer.php");
 $html = str_replace("{{DATE}}", $date, $html);
 file_put_contents("$path/Views/Footer.php", $html);
-
 
 
 //Se crean los SHOWALL_View a través de las tablas

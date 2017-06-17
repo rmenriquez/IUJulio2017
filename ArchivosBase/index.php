@@ -1,6 +1,6 @@
 <?php
 
-include '../pruebasVarias/views/ARTICULO_SHOWALL_View.php';
+include 'views/ARTICULO_SHOWALL_View.php';
 
 $field_list = ["CodigoA","AutoresA", "TituloA", "ISSN", "VolumenR", "PagIniA", "PagFinA", "FechaPublicacionR", "EstadoA"];
 $ar = [["CodigoA"=> "01",

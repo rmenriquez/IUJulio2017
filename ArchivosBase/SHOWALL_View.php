@@ -1,15 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: RaquelMarcos
- * Date: 27/3/17
- * Time: 21:54
- */
-
 //include 'Strings_SPANISH.php';
 //include 'Strings_ENGLISH.php';
-include 'css/iu.css';
 
 class {{TABLE_NAME}}_SHOWALL_View
 {
@@ -17,35 +9,18 @@ class {{TABLE_NAME}}_SHOWALL_View
     const HTML_SKELETON = "
         <html>
         <head>
-            <meta charset=\"UTF-8\">
+            <meta charset='UTF-8'>
             <title>{{title}}</title>
+            <link rel='stylesheet' href='css/iu.css'>
         </head>
         <body>
         <h1>{{header}}</h1>
-        <div id='menu'>
-        {{menu}}
-        </div>
         <div id='data'>
         {{data}} 
-        </div>
-        <div id='footer'>       
-        {{footer}}
-        </div>
-        </body> 
-        </html>";
+        </div>";
 
-    const TITLE_KEY = "{{title}}";
-    protected $title;
-
-    const HEADER_KEY = "{{header}}";
-    protected $header;
-
-    const DATA_KEY = "{{data}}";
-
-    const FOOTER_KEY = "{{footer}}";
-
-    const  MENU_KEY = "{{menu}}";
-
+    private $title;
+    private $header;
     private $field_list;
     private $values_list;
 
@@ -62,7 +37,6 @@ class {{TABLE_NAME}}_SHOWALL_View
 
         $this->title = $strings["SHOW ALL "]. "{{TABLE_NAME}}";
         $this->header = $strings["SHOW ALL "] . "{{TABLE_NAME}}";
-
     }
 
     /**
@@ -102,12 +76,13 @@ class {{TABLE_NAME}}_SHOWALL_View
      */
     public function render()
     {
-        $html = str_replace(/*self::TITLE_KEY*/"{{title}}", $this->title, self::HTML_SKELETON);
-        $html = str_replace(/*self::HEADER_KEY*/"{{header}}", $this->header, $html);
-        $html = str_replace("{{menu}}", include 'Menu.php', $html);
-        $html = str_replace(/*self::DATA_KEY*/"{{data}}", $this->generateTable(), $html);
-        $html = str_replace("{{footer}}", include 'Footer.php', $html);
+        $html = str_replace("{{title}}", $this->title, self::HTML_SKELETON);
+        $html = str_replace("{{header}}", $this->header, $html);
+        $html = str_replace("{{data}}", $this->generateTable(), $html);
+        include 'Menu.php';
         print ($html);
+        include 'Footer.php';
+        print ("</body></html>");
     }
 
     private function generateTable()

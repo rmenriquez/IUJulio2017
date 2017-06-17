@@ -6,3 +6,11 @@
     font-family: Arial, sans-serif;
     font-size: 11pt;
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
