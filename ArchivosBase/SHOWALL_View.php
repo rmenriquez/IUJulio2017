@@ -5,18 +5,18 @@
 
 class {{TABLE_NAME}}_SHOWALL_View
 {
+    const HTML_HEADER ='<html>
+        <head>
+            <meta charset=\'UTF-8\'>
+            <title>{{title}}</title>
+            <link rel=\'stylesheet\' href=\'css/iu.css\'>
+        </head>
+        <body>';
 
     const HTML_SKELETON = "
-        <html>
-        <head>
-            <meta charset='UTF-8'>
-            <title>{{title}}</title>
-            <link rel='stylesheet' href='css/iu.css'>
-        </head>
-        <body>
-        <h1>{{header}}</h1>
-        <div id='data'>
-        {{data}} 
+        <div class='data'>
+            <h1>{{header}}</h1>
+            {{data}} 
         </div>";
 
     private $title;
@@ -79,6 +79,7 @@ class {{TABLE_NAME}}_SHOWALL_View
         $html = str_replace("{{title}}", $this->title, self::HTML_SKELETON);
         $html = str_replace("{{header}}", $this->header, $html);
         $html = str_replace("{{data}}", $this->generateTable(), $html);
+        print (self::HTML_HEADER);
         include 'Menu.php';
         print ($html);
         include 'Footer.php';
@@ -121,7 +122,7 @@ class {{TABLE_NAME}}_SHOWALL_View
             $table = $table . "</tr>";
         }
         $table = $table . "</table><br>";
-        $table .=  '<a href=Index_Controller.php" title="Back">Back</a>';
+        $table .=  '<a href="Index_Controller.php" title="Back">Back</a>';
 
         return $table;
     }

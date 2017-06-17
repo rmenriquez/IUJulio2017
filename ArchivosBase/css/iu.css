@@ -1,10 +1,21 @@
-#menu ul {
+nav{
+    width: 20%;
+    display: inline-block;
+    float: left;
+}
+nav>ul {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
     width: 200px;
     font-family: Arial, sans-serif;
     font-size: 11pt;
+}
+
+.data{
+    width: 80%;
+    display: inline-block;
+    float: left;
 }
 
 footer {
