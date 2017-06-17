@@ -90,7 +90,7 @@ class {{TABLE_NAME}}_SHOWALL_View
     {
         $table = "<table>";
         $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?action=ADD'>
-								<img src='Icons/add.png' height='20px' width='20px'>
+								<img src='Views/Icons/add.png' height='20px' width='20px'>
 							</a> </td>";
         $table = $table . "<tr>";
 
@@ -111,13 +111,13 @@ class {{TABLE_NAME}}_SHOWALL_View
                 }
             }
             $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=EDIT'>
-								<img src='Icons/edit.png' height='20px' width='20px'>
+								<img src='Views/Icons/edit.png' height='20px' width='20px'>
 							</a> </td>";
             $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=DELETE'>
-								<img src='Icons/delete.png' height='20px' width='20px'>
+								<img src='Views/Icons/delete.png' height='20px' width='20px'>
 							</a> </td>";
             $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=SHOWCURRENT'>
-								<img src='Icons/details.png' height='20px' width='20px'>
+								<img src='Views/Icons/details.png' height='20px' width='20px'>
 							</a> </td>";
             $table = $table . "</tr>";
         }
