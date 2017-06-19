@@ -37,7 +37,7 @@ class {{TABLE_NAME}}_DELETE_View
 
     public function render()
 {
-
+    include 'Menu.php';
     $table = "<table>";
     $table = $table . "<tr>";
     foreach ($this->values_list as $key => $values) {
@@ -55,8 +55,8 @@ class {{TABLE_NAME}}_DELETE_View
     }
     $table = $table . "</table><br>";
     $table .=  '<a href={{TABLE_NAME}}_Controller.php" title="Back">Back</a>';
-
-
+    print ($table);
+    include 'Footer.php';
     return $table;
 
 }

@@ -18,6 +18,8 @@ class {{TABLE_NAME}}_SEARCH_View
         </head>
 
         <body>
+        <?php include 'Menu.php';
+        ?>
         <h3>Search {{TABLE_NAME}}</h3>
         <form action="?action=EDIT" method="post">
 
@@ -27,6 +29,8 @@ class {{TABLE_NAME}}_SEARCH_View
 
 
         </form>
+        <?php include 'Footer.php';
+        ?>
         </body>
         </html>
 

@@ -80,6 +80,7 @@ class {{TABLE_NAME}}_SHOWALL_View
         $html = str_replace("{{header}}", $this->header, $html);
         $html = str_replace("{{data}}", $this->generateTable(), $html);
         print (self::HTML_HEADER);
+        include 'Header.php';
         include 'Menu.php';
         print ($html);
         include 'Footer.php';

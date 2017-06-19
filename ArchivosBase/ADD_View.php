@@ -14,9 +14,11 @@ class {{TABLE_NAME}}_ADD_View{
         <head>
             <title> ADD {{TABLE_NAME}}</title>
             <meta charset="UTF-8">
+            <link rel='stylesheet' href='Views/css/iu.css'>
         </head>
-
         <body>
+        <?php include 'Menu.php';
+        ?>
         <h3>ADD {{TABLE_NAME}}</h3>
         <form action="?action=ADD" method="post">
 
@@ -25,9 +27,9 @@ class {{TABLE_NAME}}_ADD_View{
             <a href="{{TABLE_NAME}}_Controller.php" title="Back">Back</a>
 
         </form>
-        </body>
         <?php include 'Footer.php';
         ?>
+        </body>
         </html>
 
         <?php

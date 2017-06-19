@@ -147,6 +147,10 @@ $html = str_replace("{{DATE}}", $date, $html);
 file_put_contents("$path/Views/Footer.php", $html);
 
 
+//Se copia el Header
+copy("ArchivosBase/Header.php", $path . "/Views/Header.php");
+
+
 //Se crean los SHOWALL_View a través de las tablas
 foreach ($info as $table) {
     $tableName = $table["name"];

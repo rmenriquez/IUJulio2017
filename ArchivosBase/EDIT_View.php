@@ -14,9 +14,12 @@ class {{TABLE_NAME}}_EDIT_View
     <head>
         <title> Edit {{TABLE_NAME}}</title>
         <meta charset="UTF-8">
+        <link rel='stylesheet' href='Views/css/iu.css'>
     </head>
 
     <body>
+    <?php include 'Menu.php';
+    ?>
     <h3>Edit {{TABLE_NAME}}</h3>
     <form action="?action=EDIT" method="post">
 
@@ -26,6 +29,8 @@ class {{TABLE_NAME}}_EDIT_View
 
 
     </form>
+    <?php include 'Footer.php';
+    ?>
     </body>
     </html>
 
