@@ -69,13 +69,51 @@ class {{TABLE_NAME}}_SHOWALL_View{
             <link rel='stylesheet' href='../View/css/iu.css'>
         </head>
         <body>
-
+        <div class="menu">
         <?php
         include 'Menu.php';
         ?>
+        </div>
         <div class='data'>
             <h1><?php echo $this->header; ?></h1>
-            <?php echo $this->generateTable(); ?>
+            <table>
+                <td> <a href='{{TABLE_NAME}}_Controller.php?action=ADD'>
+                        <img src='../View/Icons/add.png' height='20px' width='20px'>
+                    </a> </td>
+                <tr>
+                    <?php
+                    $table = "";
+                    foreach ($this->field_list as $field) {
+                        $table = $table . "<th>" . utf8_encode($field) . "</th>";
+                    }
+                    $table = $table . "</tr>";
+                    foreach ($this->values_list as $value) {
+                        $table = $table . "<tr>";
+                        foreach ($this->field_list as $field) {
+                            //la siguiente comprobación mira si el nombre del campo del los php coincide con el de la BD
+                            //Si no coincide, muestra una columna vacía
+                            if (isset($value[$field]) && !is_null($value[$field])) {
+                                $table = $table . "<td>" . utf8_encode($value[$field]) . "</td>";
+
+                            } else {
+                                $table = $table . "<td></td>";
+                            }
+                        }
+                        $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=EDIT'>
+								<img src='../View/Icons/edit.png' height='20px' width='20px'>
+							</a> </td>";
+                        $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=DELETE'>
+								<img src='../View/Icons/delete.png' height='20px' width='20px'>
+							</a> </td>";
+                        $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=SHOWCURRENT'>
+								<img src='../View/Icons/details.png' height='20px' width='20px'>
+							</a> </td>";
+                        $table = $table . "</tr>";
+                    }
+                    print ($table);
+                    ?>
+                </table>
+            <a href="Index_Controller.php" title="<?php echo $strings['BACK']?>"><?php echo $strings['BACK']?></a>
         </div>
         <?php
         include 'Footer.php';
@@ -85,44 +123,16 @@ class {{TABLE_NAME}}_SHOWALL_View{
         <?php
     }
 
-    private function generateTable()
+    /*private function generateTable()
     {
-        $table = "<table>";
-        $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?action=ADD'>
-								<img src='Views/Icons/add.png' height='20px' width='20px'>
-							</a> </td>";
+        $table = "";
+        $table .= "";
         $table = $table . "<tr>";
 
-        foreach ($this->field_list as $field) {
-            $table = $table . "<th>" . utf8_encode($field) . "</th>";
-        }
-        $table = $table . "</tr>";
-        foreach ($this->values_list as $value) {
-            $table = $table . "<tr>";
-            foreach ($this->field_list as $field) {
-                //la siguiente comprobación mira si el nombre del campo del los php coincide con el de la BD
-                //Si no coincide, muestra una columna vacía
-                if (isset($value[$field]) && !is_null($value[$field])) {
-                    $table = $table . "<td>" . utf8_encode($value[$field]) . "</td>";
 
-                } else {
-                    $table = $table . "<td></td>";
-                }
-            }
-            $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=EDIT'>
-								<img src='Views/Icons/edit.png' height='20px' width='20px'>
-							</a> </td>";
-            $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=DELETE'>
-								<img src='Views/Icons/delete.png' height='20px' width='20px'>
-							</a> </td>";
-            $table .= "<td> <a href='{{TABLE_NAME}}_Controller.php?{{ATRIBUTO}}&action=SHOWCURRENT'>
-								<img src='Views/Icons/details.png' height='20px' width='20px'>
-							</a> </td>";
-            $table = $table . "</tr>";
-        }
         $table = $table . "</table><br>";
-        $table .=  '<a href="Index_Controller.php" title="'.$strings['BACK'].'">'.$strings['BACK'].'</a>';
+        //$table .=  '<a href="Index_Controller.php" title="'.$strings['BACK'].'">'.$strings['BACK'].'</a>';
 
         return $table;
-    }
+    }*/
 }
