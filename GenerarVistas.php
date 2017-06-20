@@ -92,6 +92,8 @@ copy("ArchivosBase/Icons/add.png", $path . "/View/Icons/add.png");
 copy("ArchivosBase/Icons/delete.png", $path . "/View/Icons/delete.png");
 copy("ArchivosBase/Icons/details.png", $path . "/View/Icons/details.png");
 copy("ArchivosBase/Icons/edit.png", $path . "/View/Icons/edit.png");
+copy("ArchivosBase/Icons/spanish.png", $path . "/View/Icons/spanish.png");
+copy("ArchivosBase/Icons/english.png", $path . "/View/Icons/english.png");
 
 //se crea el directorio del css
 mkdir($path . '/View/css', 0777, true); //path, permisos, recursivo
@@ -102,7 +104,7 @@ copy("ArchivosBase/css/iu.css", $path . "/View/css/iu.css");
 //se crea el directorio del javaScript
 mkdir($path . '/View/js', 0777, true); //path, permisos, recursivo
 //se copia el archivo de
-copy("ArchivosBase/Icons/add.png", $path . "/View/Icons/add.png");
+copy("ArchivosBase/js/Validations.js", $path . "/View/js/Validations.js");
 
 
 //se copia el index en la carpeta final
@@ -127,7 +129,7 @@ if (!file_exists($pathIdiomas . "/Strings_SPANISH.php")) {
 }
 
 //Se copia el menú lateral
-copy("ArchivosBase/Menu.php", $path . "/views/Menu.php");
+copy("ArchivosBase/Menu.php", $path . "/view/Menu.php");
 //Se genera el codigo del menú
 $code = "";
 foreach ($info as $table) {

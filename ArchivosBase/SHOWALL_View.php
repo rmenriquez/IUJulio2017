@@ -1,7 +1,5 @@
 <?php
 
-include '../Locates/Strings_SPANISH.php';
-//include 'Strings_ENGLISH.php';
 
 class {{TABLE_NAME}}_SHOWALL_View{
     private $title;
@@ -20,8 +18,8 @@ class {{TABLE_NAME}}_SHOWALL_View{
         $this->field_list = $field_list;
         $this->values_list = $values_list;
 
-        $this->title = $strings["SHOW ALL "] . "{{TABLE_NAME}}";
-        $this->header = $strings["SHOW ALL "] . "{{TABLE_NAME}}";
+        $this->title = $strings["SHOWALL"] . "{{TABLE_NAME}}";
+        $this->header = $strings["SHOWALL"] . "{{TABLE_NAME}}";
     }
 
     /**
@@ -61,6 +59,8 @@ class {{TABLE_NAME}}_SHOWALL_View{
      */
     public function render()
     {
+
+        include 'Header.php';
         ?>
         <html>
         <head>
@@ -71,7 +71,6 @@ class {{TABLE_NAME}}_SHOWALL_View{
         <body>
 
         <?php
-        include 'Header.php';
         include 'Menu.php';
         ?>
         <div class='data'>
@@ -122,7 +121,7 @@ class {{TABLE_NAME}}_SHOWALL_View{
             $table = $table . "</tr>";
         }
         $table = $table . "</table><br>";
-        $table .= '<a href="Index_Controller.php" title="Back">Back</a>';
+        $table .=  '<a href="Index_Controller.php" title="'.$strings['BACK'].'">'.$strings['BACK'].'</a>';
 
         return $table;
     }

@@ -37,7 +37,19 @@ class {{TABLE_NAME}}_DELETE_View
 
     public function render()
 {
-    include 'Menu.php';
+    include 'Header.php';
+    ?>
+    <html>
+    <head>
+        <title> <?php $strings["DELETE"]?> {{TABLE_NAME}}</title>
+        <meta charset="UTF-8">
+        <link rel='stylesheet' href='Views/css/iu.css'>
+    </head>
+    <body>
+<?php
+    include 'Menu.php'; ?>
+    <h3> <?php $strings["DELETE"]?> {{TABLE_NAME}}</h3>
+<?php
     $table = "<table>";
     $table = $table . "<tr>";
     foreach ($this->values_list as $key => $values) {
@@ -54,10 +66,16 @@ class {{TABLE_NAME}}_DELETE_View
         $table = $table . "</tr>";
     }
     $table = $table . "</table><br>";
-    $table .=  '<a href={{TABLE_NAME}}_Controller.php" title="Back">Back</a>';
-    print ($table);
+    $table.= '<input type="submit" value="<?php $strings[\'DELETE\']?>">';
+    print ($table);?>
+    <a href={{TABLE_NAME}}_Controller.php" title="<?php $strings["BACK"]?>"><?php$strings["BACK"]?></a>
+    <?php
     include 'Footer.php';
-    return $table;
+    ?>
+    </body>
+    </html>
+
+    <?php
 
 }
 }

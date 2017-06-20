@@ -12,7 +12,7 @@
         include '../Locates/Strings_' . $_SESSION['idioma'] . '.php';
     }
     else{
-        //$_SESSION['idioma'] = 'SPANISH'; // quitar y solucionar el problema de que inicilice el idioma a galego
+
         include '../Locates/Strings_' . $_SESSION['idioma'] . '.php';
     }
 ?>
@@ -29,17 +29,16 @@
 </head>
 <body>
 <header>
-    <p style="text-align:center">
+    <p>
     <h1>
-        <?php echo $strings['GESTIÓN']; ?>
+        <?php echo $strings['MANAGEMENT']; ?>
     </h1>
     </p>
 
 
-    <div width: 50%; align="right">
-        <a href="../Controller/CambioIdioma.php?idioma=SPANISH"><img src="../View/Icons/spanish.png" style="width:20px; height:20px" title="Spanish"></a>
-        <a href="../Controller/CambioIdioma.php?idioma=ENGLISH"><img src="../View/Icons/english.png" style="width:20px; height:20px" title="English"></a>
-
+    <div class="language">
+        <a href="../Controller/CambioIdioma.php?idioma=SPANISH"><img src="../View/Icons/spanish.png" style="width:20px; height:20px" title="<?php $strings['SPANISH']?>"></a>
+        <a href="../Controller/CambioIdioma.php?idioma=ENGLISH"><img src="../View/Icons/english.png" style="width:20px; height:20px" title="<?php $strings['ENGLISH']?>"></a>
 
         <?php
 
@@ -47,10 +46,10 @@
         ?>
 
         <?php
-        echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>';
+        echo $strings['USER'] . ' : ' . $_SESSION['LOGIN'] . '<br>';
         ?>
     </div>
-    <div width: 50%; align="right">
+    <div class="logout">
         <a href='../Functions/Desconectar.php'>
             <img src='../View/Icons/sign-error.png' style="width:20px; height:20px">
         </a>
@@ -58,13 +57,13 @@
     <?php
     }
     else{
-        echo $strings['Usuario no autenticado'];
-        echo 	'<form action=\'../Controller/Register_Controller.php\' method=\'post\'>
-					<input type=\'submit\' name=\'action\' value=\'REGISTER\'>
-				</form>';
+        echo $strings['USER NOT FOUND'];
+        echo 	"<form action='../Controller/Register_Controller.php' method='post'>
+					<input type='submit' name='action' value='$strings["USER NOT FOUND"]'>
+				</form>";
     }
     ?>
 </header>
 
-<div id = 'main'>
+<div class="main">
     <article>

@@ -7,18 +7,25 @@
  */
 $strings =
     array(
-        'ADD '=>'AÑADIR ',
-        'DELETE '=>'BORRAR ',
-        'EDIT '=>'EDITAR ',
-        'SHOW ALL '=>'MOSTRAR TODO ',
-        'SHOW CURRENT '=>'MOSTRAR ACTUAL ',
-        'SEARCH '=>'BUSCAR ',
+        'BACK'=>'Atrás ',
+        'ADD'=>'Añadir ',
+        'DELETE'=>'Borrar ',
+        'EDIT'=>'Editar ',
+        'SHOWALL'=>'Mostrar todo ',
+        'SHOWCURRENT'=>'Mostrar actual ',
+        'SEARCH'=>'Buscar ',
         'BORRADO CORRECTAMENTE'=>'BORRADO CORRECTAMENTE',
         'MODIFICADO CORRECTAMENTE'=>'MODIFICADO CORRECTAMENTE',
         'INSERCIÓN REALIZADA CON ÉXITO'=>'INSERCIÓN REALIZADA CON ÉXITO',
         'ERROR EN LA MODIFICACIÓN'=>'ERROR EN LA MODIFICACIÓN',
         'ERROR EN LA INSERCIÓN'=>'ERROR EN A INSERCIÓN',
         'USUARIO NO AUTENTICADO'=>'USUARIO NO AUTENTICADO',
-        'GESTIÓN'=>'GESTIÓN',
+        'MANAGEMENT'=>'Gestión ',
+        'SPANISH'=>'Español ',
+        'ENGLISH'=>'Inglés ',
+        'USER'=>'Usuario ',
+        'LOGIN'=>'Login ',
+        'USER NOT FOUND'=>'Usuario no autenticado',
+        'REGISTER'=>'Registrarse ',
     );
 ?>

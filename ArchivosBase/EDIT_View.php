@@ -9,26 +9,27 @@
 class {{TABLE_NAME}}_EDIT_View
 {
     public function render()
-{ ?>
+{
+    include 'Header.php';
+    ?>
     <html>
     <head>
-        <title> Edit {{TABLE_NAME}}</title>
+        <title> <?php $strings["EDIT"]?> {{TABLE_NAME}}</title>
         <meta charset="UTF-8">
-        <link rel='stylesheet' href='Views/css/iu.css'>
+        <link rel='stylesheet' href='../View/css/iu.css'>
     </head>
-
     <body>
     <?php include 'Menu.php';
     ?>
-    <h3>Edit {{TABLE_NAME}}</h3>
+    <h3><?php $strings["EDIT"]?> {{TABLE_NAME}}</h3>
     <form action="?action=EDIT" method="post">
 
         {{FORM}}
-        <input type="submit" value="Editar"><br>
-        <a href="{{TABLE_NAME}}_Controller.php" title="Back">Back</a>
-
+        <input type="submit" value="<?php $strings["EDIT"]?>"><br>
 
     </form>
+    <a href="{{TABLE_NAME}}_Controller.php" title="<?php $strings["BACK"]?>"><?php$strings["BACK"]?></a>
+
     <?php include 'Footer.php';
     ?>
     </body>
