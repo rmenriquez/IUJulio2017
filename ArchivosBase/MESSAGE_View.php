@@ -7,7 +7,7 @@
  */
 
 
-class MESSAGE{
+class MESSAGE_View{
 
     private $mesage;
     private $volver;
@@ -15,7 +15,6 @@ class MESSAGE{
     function __construct($mesage, $volver){
         $this->string = $mesage;
         $this->volver = $volver;
-        $this->render();
     }
 
     function render(){

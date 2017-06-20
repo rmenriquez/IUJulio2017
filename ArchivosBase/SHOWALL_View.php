@@ -18,7 +18,7 @@ class {{TABLE_NAME}}_SHOWALL_View{
         $this->field_list = $field_list;
         $this->values_list = $values_list;
 
-        $this->title = $strings["SHOWALL"] . "{{TABLE_NAME}}";
+        $this->title = $strings["SHOWALL"]. "{{TABLE_NAME}}";
         $this->header = $strings["SHOWALL"] . "{{TABLE_NAME}}";
     }
 
