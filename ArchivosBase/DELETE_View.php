@@ -41,14 +41,15 @@ class {{TABLE_NAME}}_DELETE_View
     ?>
     <html>
     <head>
-        <title> <?php $strings["DELETE"]?> {{TABLE_NAME}}</title>
+        <title> <?php echo $strings["DELETE"]?> {{TABLE_NAME}}</title>
         <meta charset="UTF-8">
         <link rel='stylesheet' href='Views/css/iu.css'>
     </head>
     <body>
 <?php
-    include 'Menu.php'; ?>
-    <h3> <?php $strings["DELETE"]?> {{TABLE_NAME}}</h3>
+    include 'Menu.php';
+?>
+    <h3> <?php echo $strings["DELETE"]?> {{TABLE_NAME}}</h3>
 <?php
     $table = "<table>";
     $table = $table . "<tr>";

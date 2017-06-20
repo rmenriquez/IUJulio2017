@@ -13,7 +13,7 @@ class MESSAGE_View{
     private $volver;
 
     function __construct($mesage, $volver){
-        $this->string = $mesage;
+        $this->mesage = $mesage;
         $this->volver = $volver;
     }
 
