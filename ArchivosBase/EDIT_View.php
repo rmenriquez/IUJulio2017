@@ -8,24 +8,33 @@
 
 class {{TABLE_NAME}}_EDIT_View
 {
+
+    private $values_list;
+    private $field_list;
+
+    public function __construtct($field_list, $values_list){
+        $this->field_list = $field_list;
+        $this->values_list=$values_list;
+    }
+
     public function render()
 {
     include 'Header.php';
     ?>
     <html>
     <head>
-        <title> <?php $strings["EDIT"]?> {{TABLE_NAME}}</title>
+        <title> <?php echo $strings["EDIT"]?> {{TABLE_NAME}}</title>
         <meta charset="UTF-8">
         <link rel='stylesheet' href='../View/css/iu.css'>
     </head>
     <body>
     <?php include 'Menu.php';
     ?>
-    <h3><?php $strings["EDIT"]?> {{TABLE_NAME}}</h3>
+    <h3><?php echo $strings["EDIT"]?> {{TABLE_NAME}}</h3>
     <form action="?action=EDIT" method="post">
 
         {{FORM}}
-        <input type="submit" value="<?php $strings["EDIT"]?>"><br>
+        <input type="submit" value="<?php echo $strings["EDIT"]?>"><br>
 
     </form>
     <a href="{{TABLE_NAME}}_Controller.php" title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>

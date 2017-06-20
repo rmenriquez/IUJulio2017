@@ -255,16 +255,26 @@ foreach ($info as $table) {
             $ini = strpos($column["Type"], "(") + 1;
             $fin = strpos($column["Type"], ")");
             $n = substr($column["Type"], $ini, $fin - $ini);
-            $form .= '<input type="number" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" min="0" maxLength="' . $n . '"><br>' . "\n";
+            if($column["Key"]==="PRI"){
+                $form .= '<input type="number" name="' . $column["Field"] . '" value="<?php echo $this->values_list["' . $column['Field'] . '"]; ?>" readonly><br>' . "\n";
+
+            }else{
+                $form .= '<input type="number" name="' . $column["Field"] . '" value="<?php echo $this->values_list["' . $column['Field'] . '"]; ?>" min="0" maxLength="' . $n . '"><br>' . "\n";
+            }
         } else {
             if (strpos($column["Type"], "varchar") !== false) {
                 $ini = strpos($column["Type"], "(") + 1;
                 $fin = strpos($column["Type"], ")");
                 $n = substr($column["Type"], $ini, $fin - $ini);
-                $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" maxLength="' . $n . '"><br>' . "\n";
+                if($column["Key"]==="PRI"){
+                    $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->values_list["' . $column['Field'] . '"]; ?>" readonly><br>' . "\n";
+
+                }else{
+                    $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->values_list["' . $column['Field'] . '"]; ?>" maxLength="' . $n . '"><br>' . "\n";
+                }
             } else {
                 if (strpos($column["Type"], "date") !== false) {
-                    $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" ><br>' . "\n";
+                    $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '" value="<?php echo $this->values_list["' . $column['Field'] . '"]; ?>" ><br>' . "\n";
                 } else {
                     if (strpos($column["Type"], "enum") !== false) {
                         $enum = str_replace("enum(", "", $column["Type"]);
@@ -281,16 +291,16 @@ foreach ($info as $table) {
                             $ini = strpos($column["Type"], "(") + 1;
                             $fin = strpos($column["Type"], ")");
                             $n = substr($column["Type"], $ini, $fin - ($ini + 1));
-                            $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" maxLength="' . $n . '"><br>' . "\n";
+                            $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->values_list["' . $column['Field'] . '"]; ?>" maxLength="' . $n . '"><br>' . "\n";
                         } else {
                             if (strpos($column["Type"], "year") !== false) {
-                                $form .= '<input type="number" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" min="1000" maxLength="4"><br>' . "\n";
+                                $form .= '<input type="number" name="' . $column["Field"] . '" value="<?php echo $this->values_list["' . $column['Field'] . '"]; ?>" min="1000" maxLength="4"><br>' . "\n";
                             } else {
                                 if (strpos($column["Type"], "char") !== false) {
                                     $ini = strpos($column["Type"], "(") + 1;
                                     $fin = strpos($column["Type"], ")");
                                     $n = substr($column["Type"], $ini, $fin - ($ini + 1));
-                                    $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->valueList["' . $column['Field'] . '"]; ?>" min="0" maxLength="' . $n . '"  size="' . $n . '"><br>' . "\n";
+                                    $form .= '<input type="text" name="' . $column["Field"] . '" value="<?php echo $this->values_list["' . $column['Field'] . '"]; ?>" min="0" maxLength="' . $n . '"  size="' . $n . '"><br>' . "\n";
 
                                 }
                             }

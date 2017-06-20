@@ -7,12 +7,12 @@
  */
 $strings =
     array(
-        'AÑADIR '=>'ADD ',
-        'BORRAR '=>'DELETE ',
-        'EDITAR '=>'EDIT ',
-        'MOSTRAR TODO '=>'SHOW ALL ',
-        'MOSTRAR ACTUAL '=>'SHOW CURRENT ',
-        'BUSCAR '=>'SEARCH ',
+        'ADD'=>'Add ',
+        'DELETE'=>'Delete ',
+        'EDIT'=>'Edit ',
+        'SHOWALL'=>'Show all ',
+        'SHOWCURRENT'=>'Show current ',
+        'SEARCH'=>'Search ',
         'BORRADO CORRECTAMENTE'=>'SUCCESSFULLY DELETED',
         'MODIFICADO CORRECTAMENTE'=>'SUCCESSFYLLU MODIFIED',
         'INSERCIÓN REALIZADA CON ÉXITO'=>'SUCCESSFULLY INSERTION',
