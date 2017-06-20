@@ -23,5 +23,6 @@ $strings =
         'DOCUMENT CREATED ON'=>'Document created on ',
         'REGISTRY'=>'Regystry',
         'MANAGEMENT OF'=>'Management of ',
+        'MESSAGE'=>'Message ',
     );
 ?>

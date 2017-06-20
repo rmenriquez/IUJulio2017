@@ -30,5 +30,6 @@ $strings =
         'DOCUMENT CREATED ON'=>'Documento creado el',
         'REGISTRY'=>'Registro',
         'MANAGEMENT OF'=>'Gestión de ',
+        'MESSAGE'=>'Mensaje '
     );
 ?>

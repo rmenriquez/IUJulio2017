@@ -153,6 +153,9 @@ file_put_contents("$path/View/Footer.php", $html);
 copy("ArchivosBase/Header.php", $path . "/View/Header.php");
 
 
+//Se copia la Vista de los mensajes de confirmación/error
+copy("ArchivosBase/MESSAGE_View.php", $path . "/View/MESSAGE_View.php");
+
 //Se crean los SHOWALL_View a través de las tablas
 foreach ($info as $table) {
     $tableName = $table["name"];

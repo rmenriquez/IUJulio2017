@@ -12,8 +12,7 @@ class {{TABLE_NAME}}_EDIT_View
     private $values_list;
     private $field_list;
 
-    public function __construtct($field_list, $values_list){
-        $this->field_list = $field_list;
+    public function __construct( $values_list){
         $this->values_list=$values_list;
     }
 
