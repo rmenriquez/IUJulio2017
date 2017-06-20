@@ -27,5 +27,8 @@ $strings =
         'LOGIN'=>'Login ',
         'USER NOT FOUND'=>'Usuario no autenticado',
         'REGISTER'=>'Registrarse ',
+        'DOCUMENT CREATED ON'=>'Documento creado el',
+        'REGISTRY'=>'Registro',
+        'MANAGEMENT OF'=>'Gestión de ',
     );
 ?>

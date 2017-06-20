@@ -19,6 +19,9 @@ $strings =
         'ERROR EN LA MODIFICACIÓN'=>'MODIFICATION ERROR',
         'ERROR EN LA INSERCIÓN'=>'INSERTION ERROR',
         'USUARIO NO AUTENTICADO'=>'USUARIO NO AUTENTICADO',
-        'GESTIÓN'=>'GESTIÓN'
+        'GESTIÓN'=>'GESTIÓN',
+        'DOCUMENT CREATED ON'=>'Document created on ',
+        'REGISTRY'=>'Regystry',
+        'MANAGEMENT OF'=>'Management of ',
     );
 ?>

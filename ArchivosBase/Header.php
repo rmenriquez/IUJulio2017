@@ -20,7 +20,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Ejemplo pagina web</title>
     <script type="text/javascript" src="../View/js/tcal.js"></script>
    <!-- <script type="text/javascript" src="../View/js/Validaciones.js"></script> -->
     <!-- <script type="text/javascript" src="../View/js/comprobar.js"></script>-->
@@ -46,7 +45,7 @@
         ?>
 
         <?php
-        echo $strings['USER'] . ' : ' . $_SESSION['LOGIN'] . '<br>';
+        echo $strings['USER'] . ' : ' . $_SESSION['login'] . '<br>';
         ?>
     </div>
     <div class="logout">
@@ -59,7 +58,7 @@
     else{
         echo $strings['USER NOT FOUND'];
         echo 	"<form action='../Controller/Register_Controller.php' method='post'>
-					<input type='submit' name='action' value='$strings["USER NOT FOUND"]'>
+					<input type='submit' name='action' value='". $strings['REGISTER']."'>
 				</form>";
     }
     ?>

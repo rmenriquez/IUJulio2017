@@ -28,7 +28,7 @@ class {{TABLE_NAME}}_EDIT_View
         <input type="submit" value="<?php $strings["EDIT"]?>"><br>
 
     </form>
-    <a href="{{TABLE_NAME}}_Controller.php" title="<?php $strings["BACK"]?>"><?php$strings["BACK"]?></a>
+    <a href="{{TABLE_NAME}}_Controller.php" title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>
 
     <?php include 'Footer.php';
     ?>

@@ -67,7 +67,7 @@ class {{TABLE_NAME}}_SHOWCURRENT_View
         }
         $table = $table . "</table><br>";
         print ($table);?>
-        <a href={{TABLE_NAME}}_Controller.php" title="<?php $strings["BACK"]?>"><?php$strings["BACK"]?></a>
+        <a href={{TABLE_NAME}}_Controller.php" title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>
         <?php include 'Footer.php'; ?>
         </body>
         </html>

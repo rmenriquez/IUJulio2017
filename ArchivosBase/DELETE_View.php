@@ -68,7 +68,7 @@ class {{TABLE_NAME}}_DELETE_View
     $table = $table . "</table><br>";
     $table.= '<input type="submit" value="<?php $strings[\'DELETE\']?>">';
     print ($table);?>
-    <a href={{TABLE_NAME}}_Controller.php" title="<?php $strings["BACK"]?>"><?php$strings["BACK"]?></a>
+    <a href={{TABLE_NAME}}_Controller.php" title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>
     <?php
     include 'Footer.php';
     ?>

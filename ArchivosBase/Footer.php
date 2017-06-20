@@ -7,5 +7,5 @@
  */
 ?>
 <footer>
-<p> Página creada en {{DATE}}</p>
+<p><?php echo $strings['DOCUMENT CREATED ON'] ?> {{DATE}}</p>
 </footer>

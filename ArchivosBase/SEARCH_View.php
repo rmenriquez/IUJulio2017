@@ -28,7 +28,7 @@ class {{TABLE_NAME}}_SEARCH_View
             {{FORM}}
             <input type="submit" value="<?php $strings['SEARCH']?>"><br>
         </form>
-        <a href={{TABLE_NAME}}_Controller.php" title="<?php $strings["BACK"]?>"><?php$strings["BACK"]?></a>
+        <a href={{TABLE_NAME}}_Controller.php" title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>
 
         <?php include 'Footer.php';
         ?>

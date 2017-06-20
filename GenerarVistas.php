@@ -134,7 +134,7 @@ copy("ArchivosBase/Menu.php", $path . "/view/Menu.php");
 $code = "";
 foreach ($info as $table) {
     $tableName = $table["name"];
-    $code .= "<li> <a href=" . "'../Controller/" . $tableName . "_Controller.php'> Gestión de " . $tableName . "</a> </li>";
+    $code .= "<li> <a href=" . "'../Controller/" . $tableName . "_Controller.php'> <?php echo \$strings['MANAGEMENT OF']?>" . $tableName . "</a> </li>"."\n";
 
 }
 $html = file_get_contents("ArchivosBase/Menu.php");
