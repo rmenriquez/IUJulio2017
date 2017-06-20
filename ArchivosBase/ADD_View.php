@@ -14,7 +14,7 @@ class {{TABLE_NAME}}_ADD_View{
         <head>
             <title> ADD {{TABLE_NAME}}</title>
             <meta charset="UTF-8">
-            <link rel='stylesheet' href='Views/css/iu.css'>
+            <link rel='stylesheet' href='../View/css/iu.css'>
         </head>
         <body>
         <?php include 'Menu.php';

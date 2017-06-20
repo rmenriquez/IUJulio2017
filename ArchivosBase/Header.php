@@ -67,10 +67,4 @@
 </header>
 
 <div id = 'main'>
-    <?php
-    //session_start();
-    if (IsAuthenticated()){
-        include 'Menu.php';
-    }
-    ?>
     <article>

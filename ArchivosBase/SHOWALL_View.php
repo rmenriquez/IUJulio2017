@@ -1,24 +1,9 @@
 <?php
 
-//include 'Strings_SPANISH.php';
+include '../Locates/Strings_SPANISH.php';
 //include 'Strings_ENGLISH.php';
 
-class {{TABLE_NAME}}_SHOWALL_View
-{
-    const HTML_HEADER ="<html>
-        <head>
-            <meta charset=\'UTF-8\'>
-            <title>{{title}}</title>
-            <link rel='stylesheet' href='Views/css/iu.css'>
-        </head>
-        <body>";
-
-    const HTML_SKELETON = "
-        <div class='data'>
-            <h1>{{header}}</h1>
-            {{data}} 
-        </div>";
-
+class {{TABLE_NAME}}_SHOWALL_View{
     private $title;
     private $header;
     private $field_list;
@@ -35,7 +20,7 @@ class {{TABLE_NAME}}_SHOWALL_View
         $this->field_list = $field_list;
         $this->values_list = $values_list;
 
-        $this->title = $strings["SHOW ALL "]. "{{TABLE_NAME}}";
+        $this->title = $strings["SHOW ALL "] . "{{TABLE_NAME}}";
         $this->header = $strings["SHOW ALL "] . "{{TABLE_NAME}}";
     }
 
@@ -76,15 +61,29 @@ class {{TABLE_NAME}}_SHOWALL_View
      */
     public function render()
     {
-        $html = str_replace("{{title}}", $this->title, self::HTML_SKELETON);
-        $html = str_replace("{{header}}", $this->header, $html);
-        $html = str_replace("{{data}}", $this->generateTable(), $html);
-        print (self::HTML_HEADER);
+        ?>
+        <html>
+        <head>
+            <meta charset=\'UTF-8\'>
+            <title><?php echo $this->title; ?></title>
+            <link rel='stylesheet' href='../View/css/iu.css'>
+        </head>
+        <body>
+
+        <?php
         include 'Header.php';
         include 'Menu.php';
-        print ($html);
+        ?>
+        <div class='data'>
+            <h1><?php echo $this->header; ?></h1>
+            <?php echo $this->generateTable(); ?>
+        </div>
+        <?php
         include 'Footer.php';
-        print ("</body></html>");
+        ?>
+        </body>
+        </html>
+        <?php
     }
 
     private function generateTable()
@@ -104,10 +103,10 @@ class {{TABLE_NAME}}_SHOWALL_View
             foreach ($this->field_list as $field) {
                 //la siguiente comprobación mira si el nombre del campo del los php coincide con el de la BD
                 //Si no coincide, muestra una columna vacía
-                if(isset($value[$field]) && !is_null($value[$field])){
-                $table = $table . "<td>" . utf8_encode($value[$field]) . "</td>";
+                if (isset($value[$field]) && !is_null($value[$field])) {
+                    $table = $table . "<td>" . utf8_encode($value[$field]) . "</td>";
 
-                }else{
+                } else {
                     $table = $table . "<td></td>";
                 }
             }
@@ -123,7 +122,7 @@ class {{TABLE_NAME}}_SHOWALL_View
             $table = $table . "</tr>";
         }
         $table = $table . "</table><br>";
-        $table .=  '<a href="Index_Controller.php" title="Back">Back</a>';
+        $table .= '<a href="Index_Controller.php" title="Back">Back</a>';
 
         return $table;
     }

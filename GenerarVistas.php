@@ -78,7 +78,7 @@ $info = getInformacion();
 mkdir($path, 0777, true);
 
 //Se crea la carpeta de las vistas
-mkdir($path . '/Views', 0777, true);
+mkdir($path . '/View', 0777, true);
 
 //Se crea la carpeta de los strings
 mkdir($path . '/Locates', 0777, true);
@@ -86,23 +86,23 @@ mkdir($path . '/Locates', 0777, true);
 $pathIdiomas = "pruebasVarias/Locates";
 
 //Se crea el directorio de los iconos
-mkdir($path . '/Views/Icons', 0777, true);
+mkdir($path . '/View/Icons', 0777, true);
 //se copian las imágenes en la carpeta Icons generada
-copy("ArchivosBase/Icons/add.png", $path . "/Views/Icons/add.png");
-copy("ArchivosBase/Icons/delete.png", $path . "/Views/Icons/delete.png");
-copy("ArchivosBase/Icons/details.png", $path . "/Views/Icons/details.png");
-copy("ArchivosBase/Icons/edit.png", $path . "/Views/Icons/edit.png");
+copy("ArchivosBase/Icons/add.png", $path . "/View/Icons/add.png");
+copy("ArchivosBase/Icons/delete.png", $path . "/View/Icons/delete.png");
+copy("ArchivosBase/Icons/details.png", $path . "/View/Icons/details.png");
+copy("ArchivosBase/Icons/edit.png", $path . "/View/Icons/edit.png");
 
 //se crea el directorio del css
-mkdir($path . '/Views/css', 0777, true); //path, permisos, recursivo
+mkdir($path . '/View/css', 0777, true); //path, permisos, recursivo
 //Se copia el archivo css
-copy("ArchivosBase/css/iu.css", $path . "/Views/css/iu.css");
+copy("ArchivosBase/css/iu.css", $path . "/View/css/iu.css");
 
 
 //se crea el directorio del javaScript
-mkdir($path . '/Views/js', 0777, true); //path, permisos, recursivo
+mkdir($path . '/View/js', 0777, true); //path, permisos, recursivo
 //se copia el archivo de
-copy("ArchivosBase/Icons/add.png", $path . "/Views/Icons/add.png");
+copy("ArchivosBase/Icons/add.png", $path . "/View/Icons/add.png");
 
 
 //se copia el index en la carpeta final
@@ -137,18 +137,18 @@ foreach ($info as $table) {
 }
 $html = file_get_contents("ArchivosBase/Menu.php");
 $html = str_replace("{{data}}", $code, $html);
-file_put_contents("$path/Views/Menu.php", $html);
+file_put_contents("$path/View/Menu.php", $html);
 
 //Se crea la fecha del Footer.php
 $date = New DateTime('UTC');
 $date = $date->format("D-M-Y");
 $html = file_get_contents("ArchivosBase/Footer.php");
 $html = str_replace("{{DATE}}", $date, $html);
-file_put_contents("$path/Views/Footer.php", $html);
+file_put_contents("$path/View/Footer.php", $html);
 
 
 //Se copia el Header
-copy("ArchivosBase/Header.php", $path . "/Views/Header.php");
+copy("ArchivosBase/Header.php", $path . "/View/Header.php");
 
 
 //Se crean los SHOWALL_View a través de las tablas
@@ -163,7 +163,7 @@ foreach ($info as $table) {
         $html = file_get_contents("ArchivosBase/SHOWALL_View.php");
         $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
         $html = str_replace("{{ATRIBUTO}}", $code, $html);
-        file_put_contents("$path/Views/" . strtoupper($tableName) . "_SHOWALL_View.php", $html);
+        file_put_contents("$path/View/" . strtoupper($tableName) . "_SHOWALL_View.php", $html);
     }
 }
 
@@ -172,7 +172,7 @@ foreach ($info as $table) {
     $tableName = $table["name"];
     $html = file_get_contents("ArchivosBase/SHOWCURRENT_View.php");
     $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
-    file_put_contents("$path/Views/" . strtoupper($tableName) . "_SHOWCURRENT_View.php", $html);
+    file_put_contents("$path/View/" . strtoupper($tableName) . "_SHOWCURRENT_View.php", $html);
 }
 
 
@@ -238,7 +238,7 @@ foreach ($info as $table) {
     $html = file_get_contents("ArchivosBase/ADD_View.php");
     $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
     $html = str_replace("{{FORM}}", $form, $html);
-    file_put_contents("$path/Views/" . strtoupper($tableName) . "_ADD_View.php", $html);
+    file_put_contents("$path/View/" . strtoupper($tableName) . "_ADD_View.php", $html);
 }
 
 //Crear las vistas EDIT
@@ -302,7 +302,7 @@ foreach ($info as $table) {
     $html = file_get_contents("ArchivosBase/EDIT_View.php");
     $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
     $html = str_replace("{{FORM}}", $form, $html);
-    file_put_contents("$path/Views/" . strtoupper($tableName) . "_EDIT_View.php", $html);
+    file_put_contents("$path/View/" . strtoupper($tableName) . "_EDIT_View.php", $html);
 }
 
 //Crear las vistas SEARCH
@@ -366,7 +366,7 @@ foreach ($info as $table) {
     $html = file_get_contents("ArchivosBase/SEARCH_View.php");
     $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
     $html = str_replace("{{FORM}}", $form, $html);
-    file_put_contents("$path/Views/" . strtoupper($tableName) . "_SEARCH_View.php", $html);
+    file_put_contents("$path/View/" . strtoupper($tableName) . "_SEARCH_View.php", $html);
 }
 
 
@@ -375,7 +375,7 @@ foreach ($info as $table) {
     $tableName = $table["name"];
     $html = file_get_contents("ArchivosBase/DELETE_View.php");
     $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
-    file_put_contents("$path/Views/" . strtoupper($tableName) . "_DELETE_View.php", $html);
+    file_put_contents("$path/View/" . strtoupper($tableName) . "_DELETE_View.php", $html);
 }
 
 
