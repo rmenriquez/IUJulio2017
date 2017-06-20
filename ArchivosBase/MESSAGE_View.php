@@ -6,15 +6,14 @@
  * Time: 12:49
  */
 
-<?php
 
 class MESSAGE{
 
-    private $message;
+    private $mesage;
     private $volver;
 
-    function __construct($message, $volver){
-        $this->string = $message;
+    function __construct($mesage, $volver){
+        $this->string = $mesage;
         $this->volver = $volver;
         $this->render();
     }
@@ -36,7 +35,7 @@ class MESSAGE{
         </div>
         <div class="message">
             <?php
-             echo $strings[$this->message];
+             echo $strings[$this->mesage];
             ?>
         </div>
 
