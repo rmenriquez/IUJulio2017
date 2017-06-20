@@ -34,7 +34,7 @@ class {{TABLE_NAME}}_EDIT_View
     <form action="?action=EDIT" method="post">
 
         {{FORM}}
-        <input type="submit" value="<?php $strings["EDIT"]?>"><br>
+        <input type="submit" value="<?php echo $strings["EDIT"]?>"><br>
 
     </form>
     <a href="{{TABLE_NAME}}_Controller.php" title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>
