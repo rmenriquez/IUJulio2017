@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="../View/js/tcal.js"></script>
-   <!-- <script type="text/javascript" src="../View/js/Validaciones.js"></script> -->
+    <script type="text/javascript" src="../View/js/Validations.js"></script>
     <!-- <script type="text/javascript" src="../View/js/comprobar.js"></script>-->
     <!-- <link rel="stylesheet" type="text/css" href="../View/css/JulioCSS-2.css" media="screen" />-->
     <link rel="stylesheet" type="text/css" href="../View/css/tcal.css" media="screen" />

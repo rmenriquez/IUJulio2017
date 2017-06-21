@@ -43,7 +43,7 @@ class {{TABLE_NAME}}_DELETE_View
     <head>
         <title> <?php echo $strings["DELETE"]?> {{TABLE_NAME}}</title>
         <meta charset="UTF-8">
-        <link rel='stylesheet' href='Views/css/iu.css'>
+        <link rel='stylesheet' href='../Views/css/iu.css'>
     </head>
     <body>
     <div class="menu">
@@ -58,7 +58,7 @@ class {{TABLE_NAME}}_DELETE_View
     $table = "";
     foreach ($this->values_list as $key => $values) {
         $table = $table . "<tr><td>" . utf8_encode($key) . "</td>";
-        $table = $table . "<td>" . utf8_encode($values) . "</td><br>";
+        $table = $table . "<td>" . utf8_encode($values) . "</td>";
         $table = $table . "</tr>";
     }
     print ($table);?>

@@ -14,7 +14,7 @@ class {{TABLE_NAME}}_ADD_View{
         ?>
         <html>
         <head>
-            <title> <?php $strings["ADD"]?> {{TABLE_NAME}}</title>
+            <title> <?php echo $strings["ADD"]?> {{TABLE_NAME}}</title>
             <meta charset="UTF-8">
             <link rel='stylesheet' href='../View/css/iu.css'>
         </head>
@@ -23,11 +23,11 @@ class {{TABLE_NAME}}_ADD_View{
         <?php
         include 'Menu.php';
         ?>
-        <h3> <?php $strings["ADD"]?> {{TABLE_NAME}}</h3>
+        <h3> <?php echo $strings["ADD"]?> {{TABLE_NAME}}</h3>
         <form action="?action=ADD" method="post">
 
             {{FORM}}
-            <input type="submit" value="<?php $strings["ADD"]?>"><br>
+            <input type="submit" value="<?php echo $strings["ADD"]?>"><br>
 
         </form>
         <a href="{{TABLE_NAME}}_Controller.php" title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>

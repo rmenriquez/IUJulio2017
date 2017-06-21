@@ -94,6 +94,7 @@ copy("ArchivosBase/Icons/details.png", $path . "/View/Icons/details.png");
 copy("ArchivosBase/Icons/edit.png", $path . "/View/Icons/edit.png");
 copy("ArchivosBase/Icons/spanish.png", $path . "/View/Icons/spanish.png");
 copy("ArchivosBase/Icons/english.png", $path . "/View/Icons/english.png");
+copy("ArchivosBase/Icons/back.png", $path . "/View/Icons/back.png");
 
 //se crea el directorio del css
 mkdir($path . '/View/css', 0777, true); //path, permisos, recursivo
@@ -188,21 +189,36 @@ foreach ($info as $table) {
     foreach ($table["columns"] as $column) {
 
         $form .= "<label >" . $column["Field"] . "</label><br> \n";
+        $onsubmit =array();
 
         if (strpos($column["Type"], "int") !== false) {
             $ini = strpos($column["Type"], "(") + 1;
             $fin = strpos($column["Type"], ")");
             $n = substr($column["Type"], $ini, $fin - $ini);
-            $form .= '<input type="number" name="' . $column["Field"] . '" min="0" maxLength="' . $n . '"><br>' . "\n";
+            if ($column["Null"]==="YES"){
+                $form .= '<input type="number" name="' . $column["Field"] . '" min="0" maxLength="' . $n . '" required onblur="tamCampo('. $column["Field"] .','. $n .');soloNumeros('. $column["Field"] .');evitarProhibidos('. $column["Field"] .')"><br>' . "\n";
+                $onsubmit->array_push()
+            }else{
+                $form .= '<input type="number" name="' . $column["Field"] . '" min="0" maxLength="' . $n . '" required onblur="noVacio(' . $column["Field"] .');tamCampo('. $column["Field"] .','. $n .');soloNumeros('. $column["Field"] .');evitarProhibidos('. $column["Field"] .')" ><br>' . "\n";
+            }
         } else {
             if (strpos($column["Type"], "varchar") !== false) {
                 $ini = strpos($column["Type"], "(") + 1;
                 $fin = strpos($column["Type"], ")");
                 $n = substr($column["Type"], $ini, $fin - $ini);
-                $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '"><br>' . "\n";
+                if($column["Null"]==="YES"){
+                    $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '" onblur="tamCampo('. $column["Field"] .','. $n .');evitarProhibidos('. $column["Field"] .')"><br>' . "\n";
+                }else{
+                    $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '" required onblur="noVacio(' . $column["Field"] .');tamCampo('. $column["Field"] .','. $n .');evitarProhibidos('. $column["Field"] .')" ><br>' . "\n";
+
+                }
             } else {
                 if (strpos($column["Type"], "date") !== false) {
-                    $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '"><br>' . "\n";
+                    if($column["Null"]==="YES"){
+                        $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '" ><br>' . "\n";
+                    }else{
+                        $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '" required onblur="noVacio(' . $column["Field"] .')" ><br>' . "\n";
+                    }
                 } else {
                     if (strpos($column["Type"], "enum") !== false) {
                         $enum = str_replace("enum(", "", $column["Type"]);
