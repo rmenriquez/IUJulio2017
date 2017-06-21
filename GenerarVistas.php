@@ -4,8 +4,7 @@
  * User: RaquelMarcos
  * Date: 4/4/17
  * Time: 19:50
- *
- * SOLO VAN A TENER TIPO DE DATOS VARCHAR, INT Y DATE
+
  */
 
 
@@ -197,9 +196,11 @@ foreach ($info as $table) {
             $n = substr($column["Type"], $ini, $fin - $ini);
             if ($column["Null"]==="YES"){
                 $form .= '<input type="number" name="' . $column["Field"] . '" min="0" maxLength="' . $n . '" required onblur="tamCampo('. $column["Field"] .','. $n .');soloNumeros('. $column["Field"] .');evitarProhibidos('. $column["Field"] .')"><br>' . "\n";
-                $onsubmit->array_push()
+                $onsubmit->array_push("tamCampo('. \$column[\"Field\"] .','. \$n .')","soloNumeros('. \$column[\"Field\"] .')","evitarProhibidos('. \$column[\"Field\"] .')");
             }else{
                 $form .= '<input type="number" name="' . $column["Field"] . '" min="0" maxLength="' . $n . '" required onblur="noVacio(' . $column["Field"] .');tamCampo('. $column["Field"] .','. $n .');soloNumeros('. $column["Field"] .');evitarProhibidos('. $column["Field"] .')" ><br>' . "\n";
+                $onsubmit->array_push("noVacio(' .\$column[\"Field\"] .')","tamCampo('. \$column[\"Field\"] .','. \$n .')","soloNumeros('. \$column[\"Field\"] .')","evitarProhibidos('. \$column[\"Field\"] .')");
+
             }
         } else {
             if (strpos($column["Type"], "varchar") !== false) {
@@ -208,6 +209,7 @@ foreach ($info as $table) {
                 $n = substr($column["Type"], $ini, $fin - $ini);
                 if($column["Null"]==="YES"){
                     $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '" onblur="tamCampo('. $column["Field"] .','. $n .');evitarProhibidos('. $column["Field"] .')"><br>' . "\n";
+                    $onsubmit->
                 }else{
                     $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '" required onblur="noVacio(' . $column["Field"] .');tamCampo('. $column["Field"] .','. $n .');evitarProhibidos('. $column["Field"] .')" ><br>' . "\n";
 
