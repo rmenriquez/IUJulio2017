@@ -27,7 +27,7 @@ class {{TABLE_NAME}}_ADD_View{
         <form action="?action=ADD" method="post">
 
             {{FORM}}
-            <input type="submit" value="<?php echo $strings["ADD"]?>"><br>
+            <input type="submit" value="<?php echo $strings["ADD"]?>" onsubmit="{{ONSUBMIT}}"><br>
 
         </form>
         <a href="{{TABLE_NAME}}_Controller.php" title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>

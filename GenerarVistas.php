@@ -185,10 +185,10 @@ foreach ($info as $table) {
 foreach ($info as $table) {
     $tableName = $table["name"];
     $form = "";
+    $onsubmit =array();
     foreach ($table["columns"] as $column) {
 
         $form .= "<label >" . $column["Field"] . "</label><br> \n";
-        $onsubmit =array();
 
         if (strpos($column["Type"], "int") !== false) {
             $ini = strpos($column["Type"], "(") + 1;
@@ -209,17 +209,18 @@ foreach ($info as $table) {
                 $n = substr($column["Type"], $ini, $fin - $ini);
                 if($column["Null"]==="YES"){
                     $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '" onblur="tamCampo('. $column["Field"] .','. $n .');evitarProhibidos('. $column["Field"] .')"><br>' . "\n";
-                    $onsubmit->
+                    $onsubmit->array_push("tamCampo('. \$column[\"Field\"] .','. \$n .')","evitarProhibidos('. \$column[\"Field\"] .')");
                 }else{
                     $form .= '<input type="text" name="' . $column["Field"] . '" maxLength="' . $n . '" required onblur="noVacio(' . $column["Field"] .');tamCampo('. $column["Field"] .','. $n .');evitarProhibidos('. $column["Field"] .')" ><br>' . "\n";
-
+                    $onsubmit->array_push("noVacio(' . \$column[\"Field\"] .')","tamCampo('. \$column[\"Field\"] .','. \$n .')","evitarProhibidos('. \$column[\"Field\"] .')");
                 }
             } else {
                 if (strpos($column["Type"], "date") !== false) {
                     if($column["Null"]==="YES"){
                         $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '" ><br>' . "\n";
                     }else{
-                        $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '" required onblur="noVacio(' . $column["Field"] .')" ><br>' . "\n";
+                        $form .= '<input class="tcal" type="date" name="' . $column["Field"] . '" required onblur="noVacio(' . $column["Field"] .')" disable="disabled"><br>' . "\n";
+                        $onsubmit->array_push("noVacio(' . \$column[\"Field\"] .')");
                     }
                 } else {
                     if (strpos($column["Type"], "enum") !== false) {
@@ -261,6 +262,15 @@ foreach ($info as $table) {
     $html = file_get_contents("ArchivosBase/ADD_View.php");
     $html = str_replace("{{TABLE_NAME}}", strtoupper($tableName), $html);
     $html = str_replace("{{FORM}}", $form, $html);
+    $ar="";
+    for($i=0; $i< count($onsubmit); $i++){
+        if($i === (count($onsubmit)-1)){
+            $ar .= $ar[$i];
+        }else{
+            $ar .= $ar . $ar[$i] . " && ";
+        }
+    }
+    $html = str_replace("{{ONSUBMIT}}", $ar, $html);
     file_put_contents("$path/View/" . strtoupper($tableName) . "_ADD_View.php", $html);
 }
 
