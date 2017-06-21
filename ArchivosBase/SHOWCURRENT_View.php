@@ -41,14 +41,14 @@ class {{TABLE_NAME}}_SHOWCURRENT_View
         include 'Header.php'; ?>
         <html>
             <head>
-            <title> <?php $strings["SHOWCURRENT"] ?> {{TABLE_NAME}}</title>
+            <title> <?php echo $strings["SHOWCURRENT"] ?> {{TABLE_NAME}}</title>
             <meta charset="UTF-8">
             <link rel='stylesheet' href='../View/css/iu.css'>
             </head>
         <body>
         <?php
         include 'Menu.php'; ?>
-        <h3> <?php $strings["SHOWCURRENT"]?> {{TABLE_NAME}}</h3>
+        <h1> <?php echo $strings["SHOWCURRENT"]?> {{TABLE_NAME}}</h1>
         <?php
         $table = "<table>";
         $table = $table . "<tr>";
@@ -56,18 +56,14 @@ class {{TABLE_NAME}}_SHOWCURRENT_View
             $table = $table . "<th>" . utf8_encode($key) . "</th>";
         }
         $table = $table . "</tr>";
+        $table = $table . "<tr>";
         foreach ($this->values_list as $value) {
-            $table = $table . "<tr>";
-
-
             $table = $table . "<td>" . utf8_encode($value) . "</td>";
-
-
-            $table = $table . "</tr>";
         }
-        $table = $table . "</table><br>";
+        $table = $table . "</tr>";
         print ($table);?>
-        <a href={{TABLE_NAME}}_Controller.php" title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>
+        </table>
+        <a href={{TABLE_NAME}}_Controller.php title="<?php echo $strings["BACK"]?>"><?php echo $strings["BACK"]?></a>
         <?php include 'Footer.php'; ?>
         </body>
         </html>
